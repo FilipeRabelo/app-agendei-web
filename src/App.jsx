@@ -1,13 +1,9 @@
-
+import Login from "./pages/login/Login"
 
 function App() {
-
   return (
     <>
-      <h1>Projeto web agendei</h1>
-      <p>
-        sçlkjdslakdhjfaszlçjkfhsdlçjkfh
-      </p>
+      <Login/>
     </>
   )
 }
