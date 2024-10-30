@@ -1,6 +1,7 @@
 import "./login.css";
 import logo from "../../assets/logo.png";
 import fundo from "../../assets/fundo.png";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -13,7 +14,7 @@ export default function Login() {
           </h5>
           <h5 className="mb-4 text-primary">Acesse sua conta</h5>
 
-          <div className="mb-3">
+          <div className="mb-2">
             <input className="form-control" type="email" placeholder="E-mail:" />
           </div>
 
@@ -31,9 +32,9 @@ export default function Login() {
 
           <div>
             <span className="me-1">Não Tenho uma Conta.</span>
-            <a className="link" href="#">
+            <Link className="link" to="/register">
               Criar Agora
-            </a>
+            </Link>
           </div>
         </form>
       </div>
