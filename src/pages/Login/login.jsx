@@ -5,21 +5,19 @@ import fundo from '../../assets/fundo.png'
 export default function Login() {
   return (
     <div className="row">
-
-      <div className="col-sm-5 d-flex">
+      
+      <div className="col-sm-5 d-flex justify-content-center align-items-center text-center">
         <form action="">
-          <img src={logo} />
+          <img src={logo} className="form-signin" />
           <h5>Gerencie seus agendamentos de forma descomplicada.</h5>
           <h5>Acesse sua conta</h5>
 
           <div>
-            <input type="email" placeholder="E-mail"/>
-            <input type="password" placeholder="Senha"/>
+            <input type="email" placeholder="E-mail" />
+            <input type="password" placeholder="Senha" />
           </div>
           <div>
-            <button >
-              Acessar
-            </button>
+            <button>Acessar</button>
           </div>
           <div>
             <span>Não Tenho uma Conta</span>
@@ -28,10 +26,9 @@ export default function Login() {
         </form>
       </div>
 
-      <div className="col-sm-7 d-flex">
-        <img src={fundo}/>
+      <div className="col-sm-7">
+        <img src={fundo} className="background-login" />
       </div>
-
     </div>
   );
 }
