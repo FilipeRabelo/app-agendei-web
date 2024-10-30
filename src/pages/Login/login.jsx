@@ -1,9 +1,16 @@
 import "./login.css";
 import logo from "../../assets/logo.png";
 import fundo from "../../assets/fundo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+
+  const navigate = useNavigate();
+
+  function executeLogin() {
+    navigate("/appointments");
+  }
+
   return (
     <div className="row">
       <div className="col-sm-5 d-flex justify-content-center align-items-center text-center">
@@ -27,7 +34,9 @@ export default function Login() {
           </div>
 
           <div className="mt-3 mb-5">
-            <button className="btn btn-primary w-100">Acessar</button>
+            <button onClick={executeLogin} type="button" className="btn btn-primary w-100" >
+              Acessar
+            </button>
           </div>
 
           <div>
