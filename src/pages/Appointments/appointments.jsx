@@ -3,7 +3,7 @@ import './appointments.css';
 import { Link } from "react-router-dom";
 import { appointments, doctors } from '../../constants/data.js';
 import Appointment from "../../components/appointment/appointment.jsx";
-import NavBar from "../../components/navbar/navbar";
+import NavBar from "../../components/navbar/navbar.jsx";
 
 
 export default function Appointments() {

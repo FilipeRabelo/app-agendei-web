@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Login from "./pages/login/Login";
-import Register from "./pages/Register/register";
-import Appointments from "./pages/Appointments/appointments";
-import Doctors from "./pages/Doctors/doctors";
+import Login from "./pages/login/login";
+import Register from "./pages/register/register";
+import Appointments from "./pages/appointments/appointments";
+import Doctors from "./pages/doctors/doctors";
 
 export default function Rotas() {
   return (
