@@ -1,0 +1,8 @@
+.select-custom option{
+  border-radius: 1rem; /* Ajuste o valor conforme necessário */
+  font-weight: 500;
+}
+
+.h2{
+  color: white;
+}
