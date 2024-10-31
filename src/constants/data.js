@@ -139,35 +139,3 @@ export const doctors_services = [
     price: 1690
   }
 ];
-export const doctors_servicesgggg = [
-  {
-    id_service: 1,
-    description: "Consulta Médica",
-    price: 499.99
-  },
-  {
-    id_service: 2,
-    description: "Drenagem Linfática",
-    price: 650
-  },
-  {
-    id_service: 3,
-    description: "Lipoaspiração",
-    price: 5000
-  },
-  {
-    id_service: 4,
-    description: "Mamoplastia",
-    price: 1700
-  },
-  {
-    id_service: 5,
-    description: "Massagem",
-    price: 1100
-  },
-  {
-    id_service: 6,
-    description: "Rinoplastia",
-    price: 1690
-  }
-];

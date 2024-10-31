@@ -1,4 +1,6 @@
 
+
+
 import './appointments.css';
 import { Link } from "react-router-dom";
 import { appointments, doctors } from '../../constants/data.js';
@@ -20,11 +22,13 @@ export default function Appointments() {
     <div className="container-fluid mt-page">
       <NavBar />
 
+      {/* <h2>Agendamentos</h2> */}
+
       <div className="d-flex justify-content-between align-items-center">
 
-        <div className="d-flex align-items-center" >
-          <h2 className="d-inline h2">Agendamentos</h2>
-          <Link to='/appointments/add' className='btn btn-outline-primary ms-3 mb-1'>
+        <div>
+          <Link to="/appointments/add"
+            className="btn btn-primary mb-2 me-2">
             Novo Agendamento
           </Link>
         </div>
@@ -41,7 +45,7 @@ export default function Appointments() {
               {
                 doctors.map((medico) => {
                   return (
-                    <option key={ medico } value={ medico.id_doctor }>
+                    <option key={ medico.id_doctor } value={ medico.id_doctor }>
                       { medico.name }
                     </option>
                   )
