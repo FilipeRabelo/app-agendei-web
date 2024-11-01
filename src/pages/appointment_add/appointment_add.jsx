@@ -13,7 +13,7 @@ export default function AppointmentAdd(){
       <NavBar/>
       <div className='container-fluid mt-page'>
 
-        <div className='bg row col-lg-4 offset-lg-4'>
+        <div className='bg row col-lg-7 offset-lg-7'>
 
           <div className='col-12 mt-2'>
             <h2 className='h2'>

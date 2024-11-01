@@ -1,12 +1,9 @@
 
-
-
 import './appointments.css';
 import { Link, useNavigate } from "react-router-dom";
 import { appointments, doctors } from '../../constants/data.js';
 import Appointment from "../../components/appointment/appointment.jsx";
 import NavBar from "../../components/navbar/navbar.jsx";
-
 
 export default function Appointments() {
 
@@ -15,7 +12,6 @@ export default function Appointments() {
   function ClickEdit(id_appointment) {
     navigate('/appointments/edit/' + id_appointment)
   }
-
 
   function ClickDelete(id_appointment) {
     alert("ClickDelete" + id_appointment);
