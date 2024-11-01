@@ -1,43 +1,103 @@
 import "./login.css";
 import logo from "../../assets/logo.png";
 import fundo from "../../assets/fundo.png";
+import api from "../../constants/api";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
 
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ msg, setMsg ] = useState('');
+
   const navigate = useNavigate();
 
-  function executeLogin() {
-    navigate("/appointments");
+  async function executeLogin() {
+
+    setMsg('');
+
+    try {
+      const response = await api.post('/users/login', {
+        // o que vai ser enviado no corpo da requisição
+        email: email,
+        password: password
+      });
+
+      if (email == '' || password == '') {
+        alert('Digite seus dados')
+      }
+
+      if (response.data) {
+        console.log(response.data);
+      } else {
+        console.log(response);
+      }
+
+    } catch (error) {
+
+      if(error.response?.data.error){
+        setMsg(error.response?.data.error);
+      }else
+        setMsg('Error ao efetuar Login. Tente novamente mais tarde')
+      }
+    }
+
+    //navigate("/appointments");
+    setEmail('')
+    setPassword('');
   }
 
   return (
     <div className="row">
       <div className="col-sm-5 d-flex justify-content-center align-items-center text-center">
+
         <form action="" className="form-signin">
-          <img src={logo} className="img-logo mb-4" />
+          <img src={ logo } className="img-logo mb-4" />
           <h5 className="mb-5">
             Gerencie seus agendamentos de forma descomplicada.
           </h5>
           <h5 className="mb-4 text-primary">Acesse sua conta</h5>
 
           <div className="mb-2">
-            <input className="form-control" type="email" placeholder="E-mail:" />
+            <input
+              className="form-control"
+              type="email"
+              placeholder="E-mail:"
+              value={ email }
+              onChange={ (e) => setEmail(e.target.value) } // pegando e jogando dentro da variavel email
+            />
           </div>
+
 
           <div className="mb-2">
             <input
               className="form-control"
               type="password"
               placeholder="Senha:"
+              value={ password }
+              onChange={ (e) => setPassword(e.target.value) }
             />
           </div>
 
+
           <div className="mt-3 mb-5">
-            <button onClick={executeLogin} type="button" className="btn btn-primary w-100" >
+            <button onClick={ executeLogin } type="button" className="btn btn-primary w-100" >
               Acessar
             </button>
           </div>
+
+
+          {/* // ALERT DO BOOSTSTRAP  */}
+
+          {
+            msg.length > 0 &&
+            <div className="alert alert-danger" role="alert">
+              {msg}
+            </div> 
+          }
+
+
 
           <div>
             <span className="me-1">Não Tenho uma Conta.</span>
@@ -45,12 +105,15 @@ export default function Login() {
               Criar Agora
             </Link>
           </div>
+
         </form>
-      </div>
+
+      </div >
 
       <div className="col-sm-7">
-        <img src={fundo} className="background-login" />
+        <img src={ fundo } className="background-login" />
       </div>
-    </div>
+
+    </div >
   );
 }

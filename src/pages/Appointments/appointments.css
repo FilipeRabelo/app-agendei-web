@@ -10,3 +10,10 @@
 .col-buttons{
   width: 120px;
 }
+
+.borde{
+  padding-top: 2px;
+  border: 1px solid #FFF;
+  border-radius: 7px;
+  background-color: #FFF;
+}

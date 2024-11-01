@@ -7,7 +7,7 @@ export default function NavBar() {
   return (
     <nav className="navbar fixed-top navbar-expand-lg bg-primary" data-bs-theme="dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" href="/appointments">
+        <Link className="navbar-brand" to="/appointments">
           <img className='navbar-logo' src={ logo } />
         </Link>
 

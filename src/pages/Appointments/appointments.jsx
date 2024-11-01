@@ -2,7 +2,7 @@
 
 
 import './appointments.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { appointments, doctors } from '../../constants/data.js';
 import Appointment from "../../components/appointment/appointment.jsx";
 import NavBar from "../../components/navbar/navbar.jsx";
@@ -10,19 +10,22 @@ import NavBar from "../../components/navbar/navbar.jsx";
 
 export default function Appointments() {
 
-  function ClickEdite(id_appointment) {
-    alert("ClickEdite" + id_appointment);
+  const navigate = useNavigate()
+
+  function ClickEdit(id_appointment) {
+    navigate('/appointments/edit/' + id_appointment)
   }
+
 
   function ClickDelete(id_appointment) {
     alert("ClickDelete" + id_appointment);
   }
 
   return (
-    <div className="container-fluid mt-page">
+    <div className="container-fluid mt-page col-11">
       <NavBar />
 
-      {/* <h2>Agendamentos</h2> */}
+      {/* <h2>Agendamentos</h2> */ }
 
       <div className="d-flex justify-content-between align-items-center">
 
@@ -62,7 +65,7 @@ export default function Appointments() {
 
       </div>
 
-      <div className="mt-3">
+      <div className="mt-3 borde">
         <table className="table table-hover">
           <thead className="bg-primary rounded-3">
             <tr>
@@ -81,13 +84,13 @@ export default function Appointments() {
                 return (
                   <Appointment key={ Appoint.id_appointment }      // envidando as props para o component
                     id_appointment={ Appoint.id_appointment }
-                    user={ Appoint.user}
+                    user={ Appoint.user }
                     doctor={ Appoint.doctor }
                     service={ Appoint.service }
                     booking_date={ Appoint.booking_date }
                     booking_hour={ Appoint.booking_hour }
                     price={ Appoint.price }
-                    clickEdite={ ClickEdite }
+                    clickEdit={ ClickEdit }
                     clickDelete={ ClickDelete }
                   />
                 )
