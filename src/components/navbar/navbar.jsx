@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export default function NavBar() {
   return (
     <nav className="navbar fixed-top navbar-expand-sm bg-primary justify-items-center" data-bs-theme="dark">
+      
       <div className="container-fluid">
         <Link className="navbar-brand" to="/appointments">
           <img className='navbar-logo' src={ logo } />
