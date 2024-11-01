@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function NavBar() {
   return (
-    <nav className="navbar fixed-top navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav className="navbar fixed-top navbar-expand-sm bg-primary justify-items-center" data-bs-theme="dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/appointments">
           <img className='navbar-logo' src={ logo } />
@@ -17,7 +17,7 @@ export default function NavBar() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">           {/* lado esquerdo da nav */ }
+          <ul className="navbar-nav me-auto mb-2 mb-sm-0">           {/* lado esquerdo da nav */ }
             <li className="nav-item">
               <Link className="nav-link active" to="/appointments">Agendamentos</Link>
             </li>

@@ -18,32 +18,36 @@ export default function Login() {
     setMsg('');
 
     try {
+
       const response = await api.post('/users/login', {
         // o que vai ser enviado no corpo da requisição
         email: email,
         password: password
       });
 
-      if (email == '' || password == '') {
-        alert('Digite seus dados')
-      }
+      if (response.data) {      // login bem sucedido
+        
+        localStorage.setItem('sessionToken', response.data.token);
+        localStorage.setItem('sessionId', response.data.id_user);
+        localStorage.setItem('sessionEmail', response.data.email);
+        localStorage.setItem('sessionName', response.data.name);
 
-      if (response.data) {
-        console.log(response.data);
+        navigate("/appointments");
+
       } else {
-        console.log(response);
+        setMsg('Error ao efetuar Login. Tente novamente mais tarde')
       }
 
     } catch (error) {
-
-      if(error.response?.data.error){
+      if (error.response?.data.error) {
         setMsg(error.response?.data.error);
-      }else
+      }else{
         setMsg('Error ao efetuar Login. Tente novamente mais tarde')
-      }
-    }
-
-    //navigate("/appointments");
+      }        
+    } 
+    //preciso salvar no local storage por causa do token, para ficar salvo o login
+    
+    
     setEmail('')
     setPassword('');
   }
@@ -88,13 +92,13 @@ export default function Login() {
           </div>
 
 
-          {/* // ALERT DO BOOSTSTRAP  */}
+          {/* // ALERT DO BOOTSTRAP  */ }
 
           {
             msg.length > 0 &&
             <div className="alert alert-danger" role="alert">
-              {msg}
-            </div> 
+              { msg }
+            </div>
           }
 
 
