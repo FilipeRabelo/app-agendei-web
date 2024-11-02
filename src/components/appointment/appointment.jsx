@@ -1,7 +1,8 @@
 
 function Appointment(props) {
 
-  const dt = new Date(props.booking_date);
+  //2024-11-15T08:00:00
+  const dt = new Date(props.booking_date + "T" + props.booking_hour);
 
   return <tr>
     <td>{ props.user }</td>

@@ -13,13 +13,13 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  async function executeLogin() {
+  async function ExecuteLogin() {
 
     setMsg('');
 
     try {
 
-      const response = await api.post('/users/login', {
+      const response = await api.post('/admin/login', {
         // o que vai ser enviado no corpo da requisição
         email: email,
         password: password
@@ -28,9 +28,11 @@ export default function Login() {
       if (response.data) {      // login bem sucedido
         
         localStorage.setItem('sessionToken', response.data.token);
-        localStorage.setItem('sessionId', response.data.id_user);
+        localStorage.setItem('sessionId', response.data.id_admin);
         localStorage.setItem('sessionEmail', response.data.email);
         localStorage.setItem('sessionName', response.data.name);
+
+        api.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
 
         navigate("/appointments");
 
@@ -86,7 +88,7 @@ export default function Login() {
 
 
           <div className="mt-3 mb-5">
-            <button onClick={ executeLogin } type="button" className="btn btn-primary w-100" >
+            <button onClick={ ExecuteLogin } type="button" className="btn btn-primary w-100" >
               Acessar
             </button>
           </div>

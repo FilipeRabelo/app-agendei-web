@@ -1,13 +1,22 @@
 
 import './appointments.css';
-import { Link, useNavigate } from "react-router-dom";
-import { appointments, doctors } from '../../constants/data.js';
-import Appointment from "../../components/appointment/appointment.jsx";
 import NavBar from "../../components/navbar/navbar.jsx";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import Appointment from "../../components/appointment/appointment.jsx";
+import api from '../../constants/api.js';
+
 
 export default function Appointments() {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const [ appointments, setAppointments ] = useState([]);
+  const [ doctors, setDoctors ] = useState([]);
+  const [ idDoctor, setIdDoctor ] = useState('');
+  const [ dtStart, setDtStart ] = useState('');
+  const [ dtEnd, setDtEnd ] = useState('');
+
 
   function ClickEdit(id_appointment) {
     navigate('/appointments/edit/' + id_appointment)
@@ -16,6 +25,68 @@ export default function Appointments() {
   function ClickDelete(id_appointment) {
     alert("ClickDelete" + id_appointment);
   }
+
+
+  async function LoadDoctors() {
+
+    console.log('LoadAppointments...')
+
+    try {
+      const response = await api.get('/doctors');
+
+      if (response.data) {
+        setDoctors(response.data)
+      }
+    }
+
+    catch (error) {
+      if (error.response?.data.error) {
+        alert(error.response?.data.error);
+
+      } else {
+        alert('Error ao listar os medicos. Tente novamente mais tarde')
+      }
+    }
+  }
+
+  async function LoadAppointments() {
+
+    console.log('LoadAppointments...')
+
+    try {
+      const response = await api.get('/admin/appointments', {
+        params: {
+          id_doctor: idDoctor,
+          dt_start: dtStart,
+          dt_end: dtEnd
+        }
+      });
+
+      if (response.data) {
+        setAppointments(response.data); // jogando os dados recebidos da api p dentro da variavel
+      }
+    }
+
+    catch (error) {
+      if (error.response?.data.error) {
+        alert(error.response?.data.error);
+
+      } else {
+        alert('Error ao efetuar Login. Tente novamente mais tarde')
+      }
+    }
+  }
+
+  function ChangeDoctor(e) {
+    setIdDoctor(e.target.value);
+  }
+
+  useEffect(() => {
+
+    LoadDoctors();        // carregando lista de medicos
+    LoadAppointments();   // carregando lista de agendamentos
+
+  }, []);
 
   return (
     <div className="container-fluid mt-page col-11">
@@ -32,13 +103,33 @@ export default function Appointments() {
         </div>
 
         <div className="d-flex flex-column flex-md-row justify-content-start align-items-center w-100">
-          <input id="startDate" className="form-control mb-2 mb-md-0" type="date" />
+          <input
+            id="startDate"
+            className="form-control mb-2 mb-md-0"
+            type="date"
+            onChange={(e) => setDtStart(e.target.value) }
+          />
+
           <span className="m-2">Até</span>
-          <input id="startEndDate" className="form-control mb-3 mb-md-0" type="date" />
+
+          <input
+            id="startEndDate"
+            className="form-control mb-3 mb-md-0"
+            type="date"
+            onChange={(e) => setDtEnd(e.target.value) }
+          />
 
           <div className="form-control ms-3 me-3 mb-3 mb-md-0 ">
-            <select name="doctor" id="doctor" className="select-custom">
+
+            <select
+              value={ idDoctor }
+              onChange={ ChangeDoctor }
+              name="doctor" id="doctor"
+              className="select-custom"
+            >
+
               <option value="">Todos os Médicos</option>
+
               {
                 doctors.map((medico) => (
                   <option key={ medico.id_doctor } value={ medico.id_doctor }>
@@ -46,10 +137,12 @@ export default function Appointments() {
                   </option>
                 ))
               }
+
             </select>
+
           </div>
 
-          <button className="btn btn-primary w-100 mb-1 mb-md-0">
+          <button onClick={ LoadAppointments } className="btn btn-primary w-100 mb-1 mb-md-0 type='button">
             Filtrar
           </button>
         </div>

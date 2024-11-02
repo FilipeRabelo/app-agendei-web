@@ -4,13 +4,13 @@ import { doctors, doctors_services } from '../../constants/data';
 import { Link, useParams } from 'react-router-dom';
 
 
-export default function AppointmentAdd(){
+export default function AppointmentAdd() {
 
   const { id_appointment } = useParams();
-  
+
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <div className='container-fluid mt-page'>
 
         <div className='bg row col-lg-7 offset-lg-7'>
@@ -39,7 +39,7 @@ export default function AppointmentAdd(){
                   })
                 }
               </select>
-            </div>                  
+            </div>
           </div>
 
           <div className='col-12 mt-3'>
@@ -63,7 +63,7 @@ export default function AppointmentAdd(){
 
           <div className='col-6 mt-3'>
             <label htmlFor='bookingDate' className='form-label'>Data</label>
-            <input className='form-control' type='date' name='bookingDate' id='bookingDate'/>
+            <input className='form-control' type='date' name='bookingDate' id='bookingDate' />
           </div>
 
           <div className='col-6 mt-3'>
@@ -87,7 +87,7 @@ export default function AppointmentAdd(){
                 Salvar Agendamento
               </button>
 
-              <Link to={'/appointments'} className='btn btn-danger'>
+              <Link to={ '/appointments' } className='btn btn-danger'>
                 Cancelar
               </Link>
             </div>
