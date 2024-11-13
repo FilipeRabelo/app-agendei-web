@@ -139,7 +139,7 @@ export default function Register() {
       </div>
 
       <div className="col-sm-7">
-        <img src={ fundo } className="background-login" />
+        <img src={ fundo } className="background-login d-none d-sm-block" />
       </div>
     </div>
   );
