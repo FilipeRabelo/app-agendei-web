@@ -1,15 +1,24 @@
- .form-signin {
-     width: 400px;
-     padding: 15px;
- }
+.form-signin {
+  width: 400px;
+  padding: 15px;
+  border: 1.5px solid #f0f0f0;
+  border-radius: 7px;
+  background-color: #fafafa ;
+  margin-left: 10px;
+}
 
- .background-login {
-     object-fit: cover;
-     width: 100%;
-     height: 100vh;
-     object-position: left;
- }
+.img-logo {
+  width: 170px;
+}
 
- .logo {
-     width: 170px;
- }
+.background-login {
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  object-position: center;
+}
+
+.link{
+  text-decoration: none;
+  font-weight: 700;
+}

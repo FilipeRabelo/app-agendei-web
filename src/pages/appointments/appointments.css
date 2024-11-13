@@ -1,7 +1,19 @@
-.col-buttons {
-    width: 120px;
+.select-custom option{
+  border-radius: 1rem; /* Ajuste o valor conforme necessário */
+  font-weight: 500;
 }
 
-.react-confirm-alert-overlay {
-    background: rgba(0, 0, 0, 0.7);
+.h2{
+  color: white;
+}
+
+.col-buttons{
+  width: 120px;
+}
+
+.borde{
+  padding-top: 2px;
+  border: 1px solid #FFF;
+  border-radius: 7px;
+  background-color: #FFF;
 }
