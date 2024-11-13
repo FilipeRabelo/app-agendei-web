@@ -38,7 +38,7 @@ export default function NavBar() {
               <Link className="nav-link active" to="/appointments">Agendamentos</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to="/doctors">Médicos</Link>
+              <Link className="nav-link active" to="/">Médicos</Link>
             </li>
           </ul>
 
