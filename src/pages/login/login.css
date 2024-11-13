@@ -11,6 +11,12 @@
   width: 170px;
 }
 
+/* @media screen and (max-width: 767px) {
+  .img-logo{
+    display: none !important;
+  }
+} */
+
 .background-login {
   object-fit: cover;
   width: 100%;
@@ -22,3 +28,4 @@
   text-decoration: none;
   font-weight: 700;
 }
+

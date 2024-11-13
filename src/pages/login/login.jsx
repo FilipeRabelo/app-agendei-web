@@ -58,8 +58,9 @@ export default function Login() {
     <div className="row">
       <div className="col-sm-5 d-flex justify-content-center align-items-center text-center">
 
-        <form action="" className="form-signin">
+        <form action="" className="form-signin ">
           <img src={ logo } className="img-logo mb-4" />
+
           <h5 className="mb-5">
             Gerencie seus agendamentos de forma descomplicada.
           </h5>
@@ -117,7 +118,7 @@ export default function Login() {
       </div >
 
       <div className="col-sm-7">
-        <img src={ fundo } className="background-login" />
+        <img src={ fundo } className="background-login d-none d-sm-block" />
       </div>
 
     </div >
